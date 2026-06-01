@@ -1,0 +1,22 @@
+[
+  {
+    "client_id": 1,
+    "nom": "Yacine Ouasti",
+    "segment": "Premium"
+  },
+  {
+    "client_id": 2,
+    "nom": "Sofia Martin",
+    "segment": "Standard"
+  },
+  {
+    "client_id": 3,
+    "nom": "Liam Bernard",
+    "segment": "Standard"
+  },
+  {
+    "client_id": 4,
+    "nom": "Emma Roy",
+    "segment": null
+  }
+]

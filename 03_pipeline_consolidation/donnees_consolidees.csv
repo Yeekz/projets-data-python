@@ -1,0 +1,6 @@
+vente_id,client_id,montant,date,nom,segment,budget_annuel
+1,1,1200.0,2024-05-01,Yacine Ouasti,Premium,50000.0
+2,2,350.0,2024-05-02,Sofia Martin,Standard,20000.0
+3,1,800.0,2024-05-03,Yacine Ouasti,Premium,50000.0
+4,3,0.0,2024-05-04,Liam Bernard,Standard,20000.0
+5,4,150.0,2024-05-05,Emma Roy,Inconnu,
