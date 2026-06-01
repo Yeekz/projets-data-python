@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analyse de portefeuille d&#x27;actions — Yacine Ouasti</title><style>
+:root{--navy:#102844;--gold:#c2a15b;--ink:#1c2b3a;--muted:#5a7088;--bg:#f4f6f9;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
+     background:var(--bg);line-height:1.6;}
+a{color:var(--gold);}
+header.top{background:var(--navy);color:#fff;padding:18px 0;}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px;}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+header.top a{color:#cdd7e3;text-decoration:none;font-size:14px;}
+header.top a:hover{color:#fff;}
+.brand{font-weight:700;letter-spacing:1px;color:#fff;font-size:16px;}
+.hero{background:linear-gradient(135deg,#102844,#1c3a5e);color:#fff;padding:54px 0;}
+.hero h1{font-size:34px;letter-spacing:1px;}
+.hero p{color:#c9d4e0;margin-top:10px;max-width:640px;}
+.hero .tagline{color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;
+     font-size:13px;margin-top:6px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:34px 0;}
+.card{background:#fff;border:1px solid #e2e7ee;border-radius:10px;padding:20px;text-decoration:none;
+     color:var(--ink);transition:.15s;display:block;box-shadow:0 1px 3px rgba(16,40,68,.05);}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(16,40,68,.12);border-color:var(--gold);}
+.card .num{color:var(--gold);font-weight:700;font-size:13px;}
+.card h3{color:var(--navy);margin:6px 0 8px;font-size:17px;}
+.card p{color:var(--muted);font-size:14px;}
+.card .go{color:var(--gold);font-weight:700;font-size:13px;margin-top:10px;display:inline-block;}
+main{padding:34px 0 60px;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.crumb a{text-decoration:none;}
+h2.sec{color:var(--navy);font-size:22px;margin:26px 0 6px;border-left:4px solid var(--gold);
+     padding-left:12px;}
+.lead{font-size:17px;color:#33445a;margin:6px 0 4px;}
+.tags{margin:14px 0;}
+.tag{display:inline-block;background:#eef1f5;border:1px solid #d4dae2;border-radius:4px;
+     padding:3px 9px;font-size:12px;color:var(--navy);margin:0 6px 6px 0;}
+.console{background:#0d1b2a;color:#d6e2f0;font-family:Consolas,Menlo,monospace;font-size:13px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;white-space:pre;line-height:1.45;}
+pre.code{background:#1b2b3a;color:#e6edf3;font-family:Consolas,Menlo,monospace;font-size:12.5px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;line-height:1.5;}
+.chart{width:100%;border:1px solid #e2e7ee;border-radius:8px;margin-top:10px;background:#fff;}
+.btns{margin:24px 0 10px;display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;
+     font-size:14px;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
+ul.steps{margin:8px 0 8px 20px;} ul.steps li{margin:4px 0;}
+footer{background:var(--navy);color:#9fb0c4;font-size:13px;padding:22px 0;text-align:center;}
+footer a{color:#cdd7e3;}
+</style></head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="brand">YACINE OUASTI · Data &amp; Python</span>
+  <nav><a href="index.html">Accueil</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Yeekz/projets-data-python">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/yacine-ouasti-2bb49829b">LinkedIn</a></nav>
+</div></header>
+
+<main><div class="wrap">
+  <div class="crumb"><a href="index.html">← Tous les projets</a></div>
+  <span class="num">PROJET 01 · Python · pandas · NumPy</span>
+  <h1 style="color:#102844;font-size:28px;margin:6px 0 2px;">Analyse de portefeuille d&#x27;actions</h1>
+  <div class="tags"><span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">Excel</span><span class="tag">matplotlib</span><span class="tag">finance</span></div>
+  <p class="lead">À partir d'un historique de prix (CSV), le programme calcule la performance et le risque d'un portefeuille (rendement, volatilité, ratio de Sharpe, corrélations), puis exporte un rapport Excel et un graphique.</p>
+
+  <h2 class="sec">Comment ça marche</h2>
+  <ul class="steps"><li><b>Chargement</b> du CSV des prix avec pandas et validation des colonnes.</li><li><b>Rendements quotidiens</b> via <code>pct_change()</code>.</li><li><b>Annualisation</b> : rendement composé sur 252 jours, volatilité × √252.</li><li><b>Ratio de Sharpe</b> = (rendement − taux sans risque) / volatilité.</li><li><b>Corrélations</b> entre actions, puis <b>valorisation</b> pondérée (base 100).</li><li><b>Export</b> Excel multi-onglets + graphique PNG.</li></ul>
+
+  <h2 class="sec">Résultat (exécution réelle du script)</h2>
+  <div class="console">=== Indicateurs par action ===
+        Rendement annualise  Volatilite annualisee  Ratio de Sharpe
+AAPL                 0.0869                 0.1845           0.3627
+MSFT                 0.2190                 0.1739           1.1444
+MC.PA               -0.2116                 0.2217          -1.0444
+AIR.PA               0.8402                 0.1935           4.2390 
+
+=== Matrice de correlation des rendements ===
+         AAPL   MSFT  MC.PA  AIR.PA
+AAPL    1.000  0.018  0.095   0.009
+MSFT    0.018  1.000 -0.097   0.013
+MC.PA   0.095 -0.097  1.000   0.023
+AIR.PA  0.009  0.013  0.023   1.000 
+
+Valeur finale du portefeuille (base 100) : 119.50
+Performance sur la periode : +19.50 %
+
+Rapport Excel ecrit -&gt; rapport_portefeuille.xlsx
+Graphique ecrit          -&gt; valorisation_portefeuille.png
+</div>
+  <h2 class="sec">Graphique généré</h2><img class="chart" src="valorisation_portefeuille.png" alt="graphique">
+
+  <h2 class="sec">Extrait du code</h2>
+  <pre class="code">
+
+def charger_prix(chemin_csv: Path) -&gt; pd.DataFrame:
+    &quot;&quot;&quot;Lit le CSV des prix, indexe par date, valide les colonnes attendues.&quot;&quot;&quot;
+    df = pd.read_csv(chemin_csv, parse_dates=[&quot;Date&quot;], index_col=&quot;Date&quot;)
+    manquantes = set(POIDS) - set(df.columns)
+    if manquantes:
+        raise ValueError(f&quot;Colonnes manquantes dans le CSV : {manquantes}&quot;)
+    return df.sort_index()
+
+
+def calculer_indicateurs(prix: pd.DataFrame) -&gt; pd.DataFrame:
+    &quot;&quot;&quot;Rendement annualise, volatilite annualisee et ratio de Sharpe par action.&quot;&quot;&quot;
+    rendements = prix.pct_change().dropna()                 # rendements quotidiens
+    rdt_annuel = (1 + rendements.mean()) ** JOURS_BOURSE - 1
+    vol_annuelle = rendements.std() * np.sqrt(JOURS_BOURSE)
+    sharpe = (rdt_annuel - TAUX_SANS_RISQUE) / vol_annuelle
+    return pd.DataFrame({
+        &quot;Rendement annualise&quot;: rdt_annuel,
+        &quot;Volatilite annualisee&quot;: vol_annuelle,
+        &quot;Ratio de Sharpe&quot;: sharpe,
+    }).round(4)
+
+
+def valoriser_portefeuille(prix: pd.DataFrame) -&gt; pd.Series:</pre>
+
+  <div class="btns">
+    <a class="btn btn-primary" href="https://github.com/Yeekz/projets-data-python/tree/main/01_portefeuille_actions">Voir le code complet ↗</a>
+    <a class="btn btn-ghost" href="https://github.com/Yeekz/projets-data-python">Tous les projets sur GitHub</a>
+  </div>
+</div></main>
+<footer><div class="wrap">Yacine Ouasti — Projets Data &amp; Python ·
+  <a href="https://github.com/Yeekz/projets-data-python">Code source sur GitHub</a></div></footer>
+</body></html>

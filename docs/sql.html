@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Base de données SQL de suivi de transactions — Yacine Ouasti</title><style>
+:root{--navy:#102844;--gold:#c2a15b;--ink:#1c2b3a;--muted:#5a7088;--bg:#f4f6f9;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
+     background:var(--bg);line-height:1.6;}
+a{color:var(--gold);}
+header.top{background:var(--navy);color:#fff;padding:18px 0;}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px;}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+header.top a{color:#cdd7e3;text-decoration:none;font-size:14px;}
+header.top a:hover{color:#fff;}
+.brand{font-weight:700;letter-spacing:1px;color:#fff;font-size:16px;}
+.hero{background:linear-gradient(135deg,#102844,#1c3a5e);color:#fff;padding:54px 0;}
+.hero h1{font-size:34px;letter-spacing:1px;}
+.hero p{color:#c9d4e0;margin-top:10px;max-width:640px;}
+.hero .tagline{color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;
+     font-size:13px;margin-top:6px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:34px 0;}
+.card{background:#fff;border:1px solid #e2e7ee;border-radius:10px;padding:20px;text-decoration:none;
+     color:var(--ink);transition:.15s;display:block;box-shadow:0 1px 3px rgba(16,40,68,.05);}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(16,40,68,.12);border-color:var(--gold);}
+.card .num{color:var(--gold);font-weight:700;font-size:13px;}
+.card h3{color:var(--navy);margin:6px 0 8px;font-size:17px;}
+.card p{color:var(--muted);font-size:14px;}
+.card .go{color:var(--gold);font-weight:700;font-size:13px;margin-top:10px;display:inline-block;}
+main{padding:34px 0 60px;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.crumb a{text-decoration:none;}
+h2.sec{color:var(--navy);font-size:22px;margin:26px 0 6px;border-left:4px solid var(--gold);
+     padding-left:12px;}
+.lead{font-size:17px;color:#33445a;margin:6px 0 4px;}
+.tags{margin:14px 0;}
+.tag{display:inline-block;background:#eef1f5;border:1px solid #d4dae2;border-radius:4px;
+     padding:3px 9px;font-size:12px;color:var(--navy);margin:0 6px 6px 0;}
+.console{background:#0d1b2a;color:#d6e2f0;font-family:Consolas,Menlo,monospace;font-size:13px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;white-space:pre;line-height:1.45;}
+pre.code{background:#1b2b3a;color:#e6edf3;font-family:Consolas,Menlo,monospace;font-size:12.5px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;line-height:1.5;}
+.chart{width:100%;border:1px solid #e2e7ee;border-radius:8px;margin-top:10px;background:#fff;}
+.btns{margin:24px 0 10px;display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;
+     font-size:14px;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
+ul.steps{margin:8px 0 8px 20px;} ul.steps li{margin:4px 0;}
+footer{background:var(--navy);color:#9fb0c4;font-size:13px;padding:22px 0;text-align:center;}
+footer a{color:#cdd7e3;}
+</style></head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="brand">YACINE OUASTI · Data &amp; Python</span>
+  <nav><a href="index.html">Accueil</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Yeekz/projets-data-python">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/yacine-ouasti-2bb49829b">LinkedIn</a></nav>
+</div></header>
+
+<main><div class="wrap">
+  <div class="crumb"><a href="index.html">← Tous les projets</a></div>
+  <span class="num">PROJET 02 · PostgreSQL / MySQL · CRUD</span>
+  <h1 style="color:#102844;font-size:28px;margin:6px 0 2px;">Base de données SQL de suivi de transactions</h1>
+  <div class="tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">CRUD</span><span class="tag">jointures</span></div>
+  <p class="lead">Conception d'une base relationnelle (clients, comptes, transactions) et écriture de toutes les requêtes CRUD (CREATE, INSERT, UPDATE, DELETE) ainsi que des analyses avec jointures et agrégations. La démo tourne en SQLite, sans serveur à installer.</p>
+
+  <h2 class="sec">Comment ça marche</h2>
+  <ul class="steps"><li><b>Modélisation</b> : 3 tables liées par clés primaires / étrangères.</li><li><b>CREATE</b> des tables + index pour accélérer les recherches.</li><li><b>INSERT</b> des clients, comptes et transactions.</li><li><b>UPDATE</b> : recalcul des soldes ; <b>DELETE</b> d'une transaction annulée.</li><li><b>SELECT</b> avec <code>JOIN</code> et <code>GROUP BY</code> pour les indicateurs.</li></ul>
+
+  <h2 class="sec">Résultat (exécution réelle du script)</h2>
+  <div class="console">=== Solde total par client ===
+  Sofia Martin          1735.00 EUR
+  Yacine Ouasti         1569.50 EUR
+  Liam Bernard             0.00 EUR
+
+=== Debits / credits par compte ===
+  Compte 101 : +2400.00 / -1130.50
+  Compte 102 : +300.00 / 0.00
+  Compte 103 : +1800.00 / -65.00
+</div>
+  
+
+  <h2 class="sec">Extrait du code</h2>
+  <pre class="code">    # UPDATE : recalcul des soldes
+    cur.execute(&quot;&quot;&quot;UPDATE comptes SET solde =
+                   (SELECT COALESCE(SUM(montant),0) FROM transactions
+                    WHERE transactions.compte_id = comptes.compte_id)&quot;&quot;&quot;)
+    # DELETE : transaction annulee
+    cur.execute(&quot;DELETE FROM transactions WHERE transaction_id = 7&quot;)
+    cur.execute(&quot;&quot;&quot;UPDATE comptes SET solde =
+                   (SELECT COALESCE(SUM(montant),0) FROM transactions
+                    WHERE transactions.compte_id = comptes.compte_id)&quot;&quot;&quot;)
+    con.commit()
+
+    print(&quot;=== Solde total par client ===&quot;)
+    for nom, solde in cur.execute(&quot;&quot;&quot;SELECT cl.nom, SUM(co.solde)
+            FROM clients cl JOIN comptes co ON co.client_id = cl.client_id
+            GROUP BY cl.nom ORDER BY 2 DESC&quot;&quot;&quot;):
+        print(f&quot;  {nom:&lt;18} {solde:&gt;10.2f} EUR&quot;)
+
+    print(&quot;\n=== Debits / credits par compte ===&quot;)
+    q = &quot;&quot;&quot;SELECT compte_id,
+                  SUM(CASE WHEN montant&gt;0 THEN montant ELSE 0 END),
+                  SUM(CASE WHEN montant&lt;0 THEN montant ELSE 0 END)
+           FROM transactions GROUP BY compte_id&quot;&quot;&quot;
+    for cid, cred, deb in cur.execute(q):</pre>
+
+  <div class="btns">
+    <a class="btn btn-primary" href="https://github.com/Yeekz/projets-data-python/tree/main/02_sql_transactions">Voir le code complet ↗</a>
+    <a class="btn btn-ghost" href="https://github.com/Yeekz/projets-data-python">Tous les projets sur GitHub</a>
+  </div>
+</div></main>
+<footer><div class="wrap">Yacine Ouasti — Projets Data &amp; Python ·
+  <a href="https://github.com/Yeekz/projets-data-python">Code source sur GitHub</a></div></footer>
+</body></html>

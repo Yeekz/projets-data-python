@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio Data &amp; Python — Yacine Ouasti</title><style>
+:root{--navy:#102844;--gold:#c2a15b;--ink:#1c2b3a;--muted:#5a7088;--bg:#f4f6f9;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
+     background:var(--bg);line-height:1.6;}
+a{color:var(--gold);}
+header.top{background:var(--navy);color:#fff;padding:18px 0;}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px;}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+header.top a{color:#cdd7e3;text-decoration:none;font-size:14px;}
+header.top a:hover{color:#fff;}
+.brand{font-weight:700;letter-spacing:1px;color:#fff;font-size:16px;}
+.hero{background:linear-gradient(135deg,#102844,#1c3a5e);color:#fff;padding:54px 0;}
+.hero h1{font-size:34px;letter-spacing:1px;}
+.hero p{color:#c9d4e0;margin-top:10px;max-width:640px;}
+.hero .tagline{color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;
+     font-size:13px;margin-top:6px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:34px 0;}
+.card{background:#fff;border:1px solid #e2e7ee;border-radius:10px;padding:20px;text-decoration:none;
+     color:var(--ink);transition:.15s;display:block;box-shadow:0 1px 3px rgba(16,40,68,.05);}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(16,40,68,.12);border-color:var(--gold);}
+.card .num{color:var(--gold);font-weight:700;font-size:13px;}
+.card h3{color:var(--navy);margin:6px 0 8px;font-size:17px;}
+.card p{color:var(--muted);font-size:14px;}
+.card .go{color:var(--gold);font-weight:700;font-size:13px;margin-top:10px;display:inline-block;}
+main{padding:34px 0 60px;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.crumb a{text-decoration:none;}
+h2.sec{color:var(--navy);font-size:22px;margin:26px 0 6px;border-left:4px solid var(--gold);
+     padding-left:12px;}
+.lead{font-size:17px;color:#33445a;margin:6px 0 4px;}
+.tags{margin:14px 0;}
+.tag{display:inline-block;background:#eef1f5;border:1px solid #d4dae2;border-radius:4px;
+     padding:3px 9px;font-size:12px;color:var(--navy);margin:0 6px 6px 0;}
+.console{background:#0d1b2a;color:#d6e2f0;font-family:Consolas,Menlo,monospace;font-size:13px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;white-space:pre;line-height:1.45;}
+pre.code{background:#1b2b3a;color:#e6edf3;font-family:Consolas,Menlo,monospace;font-size:12.5px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;line-height:1.5;}
+.chart{width:100%;border:1px solid #e2e7ee;border-radius:8px;margin-top:10px;background:#fff;}
+.btns{margin:24px 0 10px;display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;
+     font-size:14px;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
+ul.steps{margin:8px 0 8px 20px;} ul.steps li{margin:4px 0;}
+footer{background:var(--navy);color:#9fb0c4;font-size:13px;padding:22px 0;text-align:center;}
+footer a{color:#cdd7e3;}
+</style></head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="brand">YACINE OUASTI · Data &amp; Python</span>
+  <nav><a href="index.html">Accueil</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Yeekz/projets-data-python">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/yacine-ouasti-2bb49829b">LinkedIn</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="tagline">Business &amp; Data — Python · SQL · Analyse de données</div>
+  <h1>Yacine Ouasti</h1>
+  <p>Étudiant en Global BBA (NEOMA) → Master Risk Management &amp; Compliance (IÉSEG).
+  Je combine une culture financière solide avec des compétences concrètes en Python, SQL
+  et analyse de données. Voici quatre projets concrets — chacun s'exécute et produit
+  de vrais résultats.</p>
+</div></section>
+<main><div class="wrap">
+  <h2 class="sec">Mes projets</h2>
+  <div class="cards">
+  <a class="card" href="portefeuille.html">
+    <span class="num">PROJET 01</span>
+    <h3>Analyse de portefeuille d&#x27;actions</h3>
+    <p>Rendement, volatilité, Sharpe et corrélations à partir d&#x27;un CSV de prix.</p>
+    <span class="tag">pandas · NumPy</span>
+    <span class="go">Voir le projet →</span>
+  </a>
+  <a class="card" href="sql.html">
+    <span class="num">PROJET 02</span>
+    <h3>Base de données SQL de transactions</h3>
+    <p>Modélisation relationnelle et requêtes CRUD + jointures.</p>
+    <span class="tag">PostgreSQL / MySQL</span>
+    <span class="go">Voir le projet →</span>
+  </a>
+  <a class="card" href="pipeline.html">
+    <span class="num">PROJET 03</span>
+    <h3>Pipeline de consolidation de données</h3>
+    <p>ETL multi-formats : JSON, CSV, Excel — nettoyage et fusion.</p>
+    <span class="tag">pandas · ETL</span>
+    <span class="go">Voir le projet →</span>
+  </a>
+  <a class="card" href="scoring.html">
+    <span class="num">PROJET 04</span>
+    <h3>Scoring de risque de crédit PME</h3>
+    <p>Notation, classes de risque et stress test.</p>
+    <span class="tag">scoring · risque</span>
+    <span class="go">Voir le projet →</span>
+  </a></div>
+  <p style="color:var(--muted);font-size:14px;">Le code source complet est sur
+  <a href="https://github.com/Yeekz/projets-data-python">GitHub</a>. Chaque page montre l'exécution réelle du script.</p>
+</div></main>
+<footer><div class="wrap">Yacine Ouasti — Projets Data &amp; Python ·
+  <a href="https://github.com/Yeekz/projets-data-python">Code source sur GitHub</a></div></footer>
+</body></html>

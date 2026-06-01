@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scoring de risque de crédit PME — Yacine Ouasti</title><style>
+:root{--navy:#102844;--gold:#c2a15b;--ink:#1c2b3a;--muted:#5a7088;--bg:#f4f6f9;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
+     background:var(--bg);line-height:1.6;}
+a{color:var(--gold);}
+header.top{background:var(--navy);color:#fff;padding:18px 0;}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px;}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+header.top a{color:#cdd7e3;text-decoration:none;font-size:14px;}
+header.top a:hover{color:#fff;}
+.brand{font-weight:700;letter-spacing:1px;color:#fff;font-size:16px;}
+.hero{background:linear-gradient(135deg,#102844,#1c3a5e);color:#fff;padding:54px 0;}
+.hero h1{font-size:34px;letter-spacing:1px;}
+.hero p{color:#c9d4e0;margin-top:10px;max-width:640px;}
+.hero .tagline{color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;
+     font-size:13px;margin-top:6px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:34px 0;}
+.card{background:#fff;border:1px solid #e2e7ee;border-radius:10px;padding:20px;text-decoration:none;
+     color:var(--ink);transition:.15s;display:block;box-shadow:0 1px 3px rgba(16,40,68,.05);}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(16,40,68,.12);border-color:var(--gold);}
+.card .num{color:var(--gold);font-weight:700;font-size:13px;}
+.card h3{color:var(--navy);margin:6px 0 8px;font-size:17px;}
+.card p{color:var(--muted);font-size:14px;}
+.card .go{color:var(--gold);font-weight:700;font-size:13px;margin-top:10px;display:inline-block;}
+main{padding:34px 0 60px;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.crumb a{text-decoration:none;}
+h2.sec{color:var(--navy);font-size:22px;margin:26px 0 6px;border-left:4px solid var(--gold);
+     padding-left:12px;}
+.lead{font-size:17px;color:#33445a;margin:6px 0 4px;}
+.tags{margin:14px 0;}
+.tag{display:inline-block;background:#eef1f5;border:1px solid #d4dae2;border-radius:4px;
+     padding:3px 9px;font-size:12px;color:var(--navy);margin:0 6px 6px 0;}
+.console{background:#0d1b2a;color:#d6e2f0;font-family:Consolas,Menlo,monospace;font-size:13px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;white-space:pre;line-height:1.45;}
+pre.code{background:#1b2b3a;color:#e6edf3;font-family:Consolas,Menlo,monospace;font-size:12.5px;
+     padding:16px 18px;border-radius:8px;overflow-x:auto;line-height:1.5;}
+.chart{width:100%;border:1px solid #e2e7ee;border-radius:8px;margin-top:10px;background:#fff;}
+.btns{margin:24px 0 10px;display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;
+     font-size:14px;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
+ul.steps{margin:8px 0 8px 20px;} ul.steps li{margin:4px 0;}
+footer{background:var(--navy);color:#9fb0c4;font-size:13px;padding:22px 0;text-align:center;}
+footer a{color:#cdd7e3;}
+</style></head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="brand">YACINE OUASTI · Data &amp; Python</span>
+  <nav><a href="index.html">Accueil</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Yeekz/projets-data-python">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/yacine-ouasti-2bb49829b">LinkedIn</a></nav>
+</div></header>
+
+<main><div class="wrap">
+  <div class="crumb"><a href="index.html">← Tous les projets</a></div>
+  <span class="num">PROJET 04 · Python · Risk Management</span>
+  <h1 style="color:#102844;font-size:28px;margin:6px 0 2px;">Scoring de risque de crédit PME</h1>
+  <div class="tags"><span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">scoring</span><span class="tag">stress test</span><span class="tag">risque</span></div>
+  <p class="lead">Notation interne du risque de crédit de PME à partir de ratios financiers, avec classes de risque (A à D) et scénario de stress. Projet directement lié au Master Risk Management & Compliance.</p>
+
+  <h2 class="sec">Comment ça marche</h2>
+  <ul class="steps"><li><b>Lecture</b> des ratios (liquidité, endettement, marge, croissance).</li><li><b>Normalisation</b> contre des bornes de référence fixes (0–1, avec clipping).</li><li><b>Score pondéré</b> (0–100) selon des poids métier.</li><li><b>Classes</b> A/B/C/D via <code>pd.cut</code>.</li><li><b>Stress test</b> : dégradation marge/croissance puis recalcul.</li><li><b>Recommandation</b> crédit accordé / à étudier.</li></ul>
+
+  <h2 class="sec">Résultat (exécution réelle du script)</h2>
+  <div class="console">=== Scoring de base ===
+  entreprise  score     classe
+  Alpha SARL  70.87          B
+    Beta SAS  22.14  D (eleve)
+  Gamma EURL  96.50 A (faible)
+    Delta SA  43.20          C
+Epsilon SARL   6.64  D (eleve) 
+
+=== Apres stress test (-30% marge, -10pts croissance) ===
+  entreprise  score     classe
+  Alpha SARL  61.27          B
+    Beta SAS  18.24  D (eleve)
+  Gamma EURL  85.10 A (faible)
+    Delta SA  35.10          C
+Epsilon SARL   7.24  D (eleve) 
+
+Resultats ecrits -&gt; resultats_scoring.csv
+</div>
+  
+
+  <h2 class="sec">Extrait du code</h2>
+  <pre class="code"># le score comparable dans le temps et le stress test reellement parlant.
+BORNES = {
+    &quot;ratio_liquidite&quot;:   (0.5, 2.5),    # &lt; 0.5 mauvais, &gt; 2.5 excellent
+    &quot;ratio_endettement&quot;: (0.2, 0.9),    # inverse : 0.2 excellent, 0.9 mauvais
+    &quot;marge_nette&quot;:       (-0.05, 0.20),
+    &quot;croissance_ca&quot;:     (-0.10, 0.15),
+}
+
+
+def normaliser(serie: pd.Series, mini: float, maxi: float,
+               inverse: bool = False) -&gt; pd.Series:
+    &quot;&quot;&quot;Ramene une colonne entre 0 et 1 contre des bornes fixes (avec clipping).
+    inverse=True : une petite valeur est bonne (ex : endettement).&quot;&quot;&quot;
+    norme = ((serie - mini) / (maxi - mini)).clip(0, 1)
+    return 1 - norme if inverse else norme
+
+
+def calculer_score(df: pd.DataFrame) -&gt; pd.DataFrame:
+    df = df.copy()
+    df[&quot;s_liquidite&quot;]   = normaliser(df[&quot;ratio_liquidite&quot;],   *BORNES[&quot;ratio_liquidite&quot;])
+    df[&quot;s_endettement&quot;] = normaliser(df[&quot;ratio_endettement&quot;], *BORNES[&quot;ratio_endettement&quot;], inverse=True)
+    df[&quot;s_marge&quot;]       = normaliser(df[&quot;marge_nette&quot;],       *BORNES[&quot;marge_nette&quot;])
+    df[&quot;s_croissance&quot;]  = normaliser(df[&quot;croissance_ca&quot;],     *BORNES[&quot;croissance_ca&quot;])
+
+    df[&quot;score&quot;] = (
+        df[&quot;s_liquidite&quot;]   * POIDS[&quot;ratio_liquidite&quot;] +
+        df[&quot;s_endettement&quot;] * POIDS[&quot;ratio_endettement&quot;] +
+        df[&quot;s_marge&quot;]       * POIDS[&quot;marge_nette&quot;] +
+        df[&quot;s_croissance&quot;]  * POIDS[&quot;croissance_ca&quot;]</pre>
+
+  <div class="btns">
+    <a class="btn btn-primary" href="https://github.com/Yeekz/projets-data-python/tree/main/04_scoring_credit">Voir le code complet ↗</a>
+    <a class="btn btn-ghost" href="https://github.com/Yeekz/projets-data-python">Tous les projets sur GitHub</a>
+  </div>
+</div></main>
+<footer><div class="wrap">Yacine Ouasti — Projets Data &amp; Python ·
+  <a href="https://github.com/Yeekz/projets-data-python">Code source sur GitHub</a></div></footer>
+</body></html>
