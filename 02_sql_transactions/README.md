@@ -1,23 +1,42 @@
-# Projet 2 — Base de donnees SQL de suivi de transactions
+# Suivi de transactions — base de données SQL
 
-Modelisation relationnelle et requetes SQL completes (CRUD) pour suivre des
-clients, leurs comptes et leurs transactions.
+Projet réalisé dans le cadre de mon cours de bases de données. L'objectif :
+modéliser un suivi de comptes bancaires et écrire les requêtes SQL pour
+l'alimenter et l'analyser.
 
-## Fichiers
-- `schema.sql`   — creation des tables (PostgreSQL / MySQL).
-- `requetes.sql` — INSERT, UPDATE, DELETE et SELECT (jointures + agregations).
-- `demo_sqlite.py` — version executable immediatement (SQLite, aucun serveur requis).
+## Modèle de données
 
-## Lancer la demo
-```bash
-python demo_sqlite.py
+```
+ clients                comptes                 transactions
+ ----------             ----------              --------------
+ client_id (PK) ──1───< client_id (FK)          transaction_id (PK)
+ nom                    compte_id (PK) ──1───<   compte_id (FK)
+ email                  type_compte             date_op
+ ville                  solde                   libelle
+ date_creation                                  montant
 ```
 
-## Le CRUD a savoir expliquer
-- **CREATE** : `CREATE TABLE ...` definit la structure (colonnes, types, cles).
-- **INSERT** : ajoute des lignes.
-- **UPDATE** : modifie des lignes existantes (ici : recalcul des soldes).
-- **DELETE** : supprime des lignes.
-- **SELECT** : lit les donnees ; `JOIN` relie les tables, `GROUP BY` agrege.
-- **Cle primaire** : identifiant unique d'une ligne. **Cle etrangere** : lien
-  vers la cle primaire d'une autre table (integrite referentielle).
+- Un **client** possède plusieurs **comptes** (relation 1—N).
+- Un **compte** enregistre plusieurs **transactions** (relation 1—N).
+- Lien assuré par les clés étrangères (`client_id`, `compte_id`).
+
+## Fichiers
+
+| Fichier | Contenu |
+|---------|---------|
+| `schema.sql`   | création des 3 tables + index |
+| `requetes.sql` | INSERT, UPDATE, DELETE et les requêtes d'analyse |
+
+## Requêtes d'analyse incluses
+
+1. Solde total par client (jointure `clients`↔`comptes` + `GROUP BY`)
+2. Débits / crédits par compte (`CASE WHEN` + `SUM`)
+3. Comptes à découvert (`WHERE solde < 0`)
+
+## Tester
+
+Compatible PostgreSQL et MySQL. Pour essayer rapidement sans serveur :
+
+```bash
+sqlite3 demo.db ".read schema.sql" ".read requetes.sql"
+```

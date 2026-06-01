@@ -1,22 +1,11 @@
 # Projets Data & Python — Yacine Ouasti
 
-Quatre projets qui demontrent mes competences Python / SQL / analyse de donnees.
-Chaque dossier est autonome (code + donnees + README).
+Recueil de projets autour de la donnée, réalisés au fil de ma formation
+(Global BBA → Master Risk Management). Chacun a sa propre forme selon le contexte.
 
-| # | Projet | Competences |
-|---|--------|-------------|
-| 1 | Analyse de portefeuille d'actions | pandas, NumPy, Excel, matplotlib |
-| 2 | Base SQL de suivi de transactions | PostgreSQL/MySQL, CRUD, jointures |
-| 3 | Pipeline de consolidation multi-formats | pandas, JSON/CSV/Excel, ETL |
-| 4 | Scoring de risque de credit PME | pandas, NumPy, scoring, stress test |
+- **01 · Analyse de portefeuille** — notebook Jupyter (pandas, NumPy, matplotlib)
+- **02 · Suivi de transactions** — modélisation et requêtes SQL (PostgreSQL / MySQL)
+- **03 · Pipeline de consolidation** — ETL modulaire multi-formats (JSON/CSV/Excel)
+- **04 · Scoring de risque de crédit** — devoir NEOMA (scoring + stress test)
 
-## Pre-requis
-```bash
-pip install pandas numpy matplotlib openpyxl
-```
-
-## Lancer un projet
-```bash
-cd 01_portefeuille_actions
-python analyse_portefeuille.py
-```
+Portfolio en ligne : https://yeekz.github.io/projets-data-python

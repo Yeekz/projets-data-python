@@ -1,23 +1,44 @@
-# Projet 3 — Pipeline de consolidation de donnees multi-formats
+# Pipeline de consolidation de données (ETL)
 
-Mini-ETL : lire plusieurs formats, nettoyer, fusionner, exporter.
+Pipeline qui consolide trois sources hétérogènes (**JSON**, **CSV**, **Excel**) en
+un jeu de données propre et exploitable. Code organisé en modules, avec
+journalisation (`logging`) et annotations de types.
 
-## Sources (`sources/`)
-- `clients.json` — referentiel clients (avec un segment manquant).
-- `ventes.csv`   — ventes (avec un doublon et un montant manquant).
-- `budget.xlsx`  — budget par segment.
+## Architecture
 
-## Etapes (E-T-L)
-1. **Extract** : `read_json`, `read_csv`, `read_excel`.
-2. **Transform** : `drop_duplicates`, `fillna` (valeurs manquantes), jointures `merge`.
-3. **Load** : export CSV + Excel + indicateur CA par segment.
-
-## Lancer
-```bash
-python pipeline.py
+```
+03_pipeline_consolidation/
+├── run.py              # orchestration (point d'entrée)
+├── config.py           # chemins et paramètres
+├── etl/
+│   ├── extract.py      # lecture JSON / CSV / Excel
+│   ├── transform.py    # dédoublonnage, valeurs manquantes, jointures
+│   └── load.py         # KPI + export CSV/Excel
+└── sources/            # données d'entrée
 ```
 
-## A savoir expliquer
-- Pourquoi nettoyer : des doublons faussent les totaux, les valeurs manquantes
-  cassent les calculs. On choisit une strategie (supprimer / combler / imputer).
-- `merge` = jointure SQL en pandas (`how='left'` garde toutes les ventes).
+Découpage volontaire en **Extract / Transform / Load** : chaque étape est isolée,
+testable et remplaçable.
+
+## Lancer
+
+```bash
+python run.py
+```
+
+Sortie attendue (extrait des logs) :
+
+```
+INFO | etl.extract   | Sources lues : 4 clients, 6 ventes, 2 lignes de budget
+INFO | etl.transform | Doublons de ventes supprimes : 1
+INFO | etl.transform | Montants manquants combles : 1
+INFO | pipeline      | Pipeline termine avec succes
+```
+
+Les fichiers consolidés sont écrits dans `output/`.
+
+## Choix techniques
+
+- **`logging`** plutôt que `print` : niveaux, horodatage, traçabilité.
+- **Annotations de types** sur toutes les fonctions publiques.
+- **Jointures à gauche** (`how="left"`) pour ne perdre aucune vente.

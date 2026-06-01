@@ -1,31 +1,35 @@
--- Projet 2 — Schema de suivi de transactions
--- Compatible PostgreSQL et MySQL (types standards).
+/* =============================================================
+   Suivi de transactions bancaires - schema de la base
+   Auteur : Yacine Ouasti
+   SGBD cible : PostgreSQL / MySQL (types standards)
+   ============================================================= */
+
+/* Un client peut avoir plusieurs comptes.
+   Un compte contient plusieurs transactions. */
 
 CREATE TABLE clients (
-    client_id     INTEGER PRIMARY KEY,
-    nom           VARCHAR(80)  NOT NULL,
-    email         VARCHAR(120) UNIQUE NOT NULL,
-    ville         VARCHAR(80),
-    date_creation DATE NOT NULL
+    client_id      INT          PRIMARY KEY,
+    nom            VARCHAR(80)  NOT NULL,
+    email          VARCHAR(120) NOT NULL UNIQUE,
+    ville          VARCHAR(80),
+    date_creation  DATE         NOT NULL
 );
 
 CREATE TABLE comptes (
-    compte_id   INTEGER PRIMARY KEY,
-    client_id   INTEGER NOT NULL,
-    type_compte VARCHAR(20) NOT NULL,        -- 'courant' | 'epargne'
-    solde       DECIMAL(12,2) NOT NULL DEFAULT 0,
-    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+    compte_id    INT           PRIMARY KEY,
+    client_id    INT           NOT NULL REFERENCES clients(client_id),
+    type_compte  VARCHAR(20)   NOT NULL,          -- 'courant' ou 'epargne'
+    solde        DECIMAL(12,2) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE transactions (
-    transaction_id INTEGER PRIMARY KEY,
-    compte_id      INTEGER NOT NULL,
-    date_op        DATE NOT NULL,
-    libelle        VARCHAR(120),
-    montant        DECIMAL(12,2) NOT NULL,    -- positif = credit, negatif = debit
-    FOREIGN KEY (compte_id) REFERENCES comptes(compte_id)
+    transaction_id  INT           PRIMARY KEY,
+    compte_id       INT           NOT NULL REFERENCES comptes(compte_id),
+    date_op         DATE          NOT NULL,
+    libelle         VARCHAR(120),
+    montant         DECIMAL(12,2) NOT NULL          -- > 0 credit, < 0 debit
 );
 
--- Index pour accelerer les recherches par compte et par date
+-- on indexe ce qui est souvent filtre
 CREATE INDEX idx_tx_compte ON transactions(compte_id);
 CREATE INDEX idx_tx_date   ON transactions(date_op);
